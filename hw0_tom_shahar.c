@@ -7,9 +7,10 @@ int sum = 0;
 
 int inputCheck(char t)
 {
-    int x = scanf("%d");
-    if (x == 1) {   // recived integer
-        if (1<x<17)
+    int x;
+    scanf("%d", &x);
+    if (x == 1) {   
+        if (1<x && x<17)
         {
         return x;
         }
@@ -20,7 +21,7 @@ int inputCheck(char t)
     else{
         printf("Invalid target base!\n");
     }
-    return NULL;
+    return 0;
 }
 
 void toTarget(int target)
@@ -44,7 +45,7 @@ void toDecimal(int source)
     if ((c = getchar()) != '\n')
     {
         toDecimal(source);
-        if ('a'<=c<='f')
+        if ('a'<=c && c<='f')
         {
             sum += (c - 'a' + 10) * pow(source, i);
         }
@@ -55,12 +56,10 @@ void toDecimal(int source)
     }
 }
 
-void main()
+int main()
 {
     int source;
     int target;
-    int decimal;
-    int ret;
     printf("Enter the source base:\n");
     source = inputCheck('s');
     printf("Enter the target base:\n");
@@ -69,4 +68,5 @@ void main()
     toDecimal(source);
     printf("The number in base %d is:", target);
     toTarget(target);
+    return 0;
 }
